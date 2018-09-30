@@ -1,0 +1,7 @@
+{
+  "name": "TOEICforyou",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
