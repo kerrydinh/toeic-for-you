@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Làm bài
+      </ion-title>
+      <ion-button style="position: absolute;right: 5px;top: 5px;" (click)="onFinish()">Kết thúc</ion-button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+
+      <div *ngIf="currentQuestion">
+          <ion-list radio-group>
+            <ion-list-header class="question-header">
+              {{getQuestion()}}
+            </ion-list-header>
+            <ion-item *ngFor="let answer of currentQuestion.answers; let i = index">
+              <ion-label>{{i+1 + '. ' + answer}}</ion-label>
+              <ion-radio value="0" (ionSelect)="onCheck(i)" [checked]="i === currentAnswers[currentQuestionIndex]"></ion-radio>
+            </ion-item>
+          </ion-list>
+      
+
+        </div>
+  </ion-content>
+
+
+  <ion-footer no-shadow>
+    <ion-toolbar position="bottom">
+      <div class="button-group">
+        <ion-button class="button button-full" (click)="moveToPreviousQuestion()" *ngIf="currentQuestionIndex > 0">Previous Question</ion-button>
+        <ion-button class="button button-full" (click)="moveToNextQuestion()" *ngIf="currentQuestionIndex < questions.length - 1">Next Question</ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

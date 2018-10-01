@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
 import { QuestionService } from '../services/question.service';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   imports: [
@@ -16,10 +17,15 @@ import { QuestionService } from '../services/question.service';
       {
         path: '',
         component: ListPage
+      },
+      {
+        path: 'question',
+        component: QuestionComponent,
+        pathMatch: 'full'
       }
     ])
   ],
-  declarations: [ListPage],
+  declarations: [ListPage, QuestionComponent],
   providers: [QuestionService]
 })
 export class ListPageModule {}

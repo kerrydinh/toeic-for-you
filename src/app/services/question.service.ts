@@ -8,11 +8,18 @@ import { Observable } from 'rxjs';
 })
 
 export class QuestionService {
-
+  public questions: Question[] = [];
   constructor(private fireBaseDb: AngularFireDatabase) {
   }
 
-  public getAllQuestion(): Observable<Question[]> {
-    return this.fireBaseDb.list<Question>('questions').valueChanges();
+  public fetchQuestion() {
+    this.fireBaseDb.list<Question>('questions').valueChanges().subscribe(res => {
+      this.questions = res;
+    });
   }
+
+  public getQuestion(): Question[] {
+    return this.questions;
+  }
+
 }
